@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: Rank Tracker API
+  version: 1.0.0
+  description: API for tracking keyword rankings
+paths:
+  /api/track:
+    post:
+      summary: Track keyword rankings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessName:
+                  type: string
+                keyword:
+                  type: string
+              required:
+                - businessName
+                - keyword
+      responses:
+        '200':
+          description: Successful response with position and search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  position:
+                    type: integer
+                  searchResults:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        url:
+                          type: string
